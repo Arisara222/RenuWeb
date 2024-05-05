@@ -36,7 +36,7 @@
 							<h4 class="fs-5 fw-bold text-primary-emphasis ">Account</h4>
 						</div>
 						<div class="d-flex justify-content-end mt-2 pr-2">
-							<button type="button" class="btn btn-circle btn-primary" id="callmodelAdd" data-bs-toggle="modal" data-bs-target="#mdlAdd"><i class="fa fa-plus"></i>Add Account </button>
+							<button type="button" class="btn btn-circle btn-primary" id="btnAddAccount"><i class="fa fa-plus"></i>Add Account </button>
 						</div>
 						<hr>
 						<div class="table-responsive text-nowrap">
@@ -60,7 +60,7 @@
 								</table>
 							</div>
 							<div class="card-foot mt-2">
-                                </div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -75,8 +75,8 @@
 
 
 		<!-- Modal Add-->
-		<div class="modal fade" id="mdlAdd" tabindex="-1" aria-hidden="true">
-			<div class="modal-dialog" role="document">
+		<div class="modal fade" id="mdlAddAccount" tabindex="-1" aria-hidden="true">
+			<div class="modal-dialog modal-xl" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title" id="exampleModalLabel1">ADD ACCOUNT</h5>
@@ -84,7 +84,7 @@
 					</div>
 					<div class="modal-body">
 						<form action="" id="add" autocomplete="off">
-							<div class="row g-2">
+							<div class="form-group row mb-2" style="padding: 0px 10px;padding-bottom: 20px;margin: 10px 0px;">
 								<div class="col mb-0">
 									<label class="form-label">Employee Code</label><span class="red-text">*</span>
 									<input type="text" id="inpEmpCode" class="form-control" placeholder="Emp Code" oninput="InputAddEmpcode(this)">
@@ -94,7 +94,7 @@
 									<input type="password" id="inpEmpPassword" class="form-control" placeholder="Password">
 								</div>
 							</div>
-							<div class="row g-2">
+							<div class="form-group row mb-2" style="padding: 0px 10px;padding-bottom: 20px;margin: 10px 0px;">
 								<div class="col mb-0">
 									<label class="form-label">First name</label><span class="red-text">*</span>
 									<input type="text" id="inpFirstName" class="form-control" placeholder="FirstName" oninput="InputAddpersonal(this)">
@@ -104,16 +104,11 @@
 									<input type="text" id="inpLastName" class="form-control" placeholder="LastName" oninput="InputAddpersonal(this)">
 								</div>
 							</div>
-							<div class="row">
+							<div class="form-group row mb-2" style="padding: 0px 10px;padding-bottom: 20px;margin: 10px 0px;">
 								<div class="col mb-3">
 									<label class="form-label">Email</label><span class="red-text">*</span>
 									<input type="email" id="inpEmail" class="form-control" placeholder="xxxx@xxx.xx" oninput="InputAdd(this)">
 								</div>
-							</div>
-
-
-
-							<div class="row">
 								<div class="col mb-3">
 									<label class="form-label">Permission group</label><span class="red-text">*</span>
 									<select id="selPermissionAdd" class="selPermissionAdd select2 form-select" data-allow-clear="true">
@@ -122,11 +117,15 @@
 								</div>
 							</div>
 
-							<div class="row">
+
+
+
+
+							<div class="form-group row mb-2" style="padding: 0px 10px;padding-bottom: 20px;margin: 10px 0px;">
 								<div class="col mb-3">
-									<label class="form-label">Plant</label><span class="red-text">*</span>
+									<label class="form-label">Position</label><span class="red-text">*</span>
 									<select id="selPlantAdd" class="selPlantAdd select2 form-select" data-allow-clear="true">
-										<option value="">Choose Plant</option>
+										<option value="" selected disabled>Choose Position</option>
 									</select>
 								</div>
 							</div>
