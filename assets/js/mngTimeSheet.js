@@ -64,7 +64,7 @@ $(document).ready(function () {
                         }
                     },
                     { data: 'its_id', render: function(data) {
-                        return '<a href="javascript:void(0)" class="btn btn-warning float-center" id="btnEditBrand" data-id="' + data + '"><i class="ti-pencil"></i> Edit</a>';
+                        return '<a href="javascript:void(0)" class="btn btn-warning float-center" id="btnEdit" data-id="' + data + '"><i class="ti-pencil"></i> Edit</a>';
                     },className:'text-center'}
                 ],
             });
@@ -85,7 +85,95 @@ $(document).ready(function () {
         return hours;
     }
 
-$('#btnCreate').click(function(){
-    $('#createModal').modal('show');
-})
+    function showUsername() {
+        $.ajax({
+            url: API_URL + "Manage_timesheet/show_username",
+            type: 'GET',
+            dataType: 'json',
+        })
+        .done(function(data) {
+            $('#selUsername').empty();
+            // Append new options from data received
+            
+            $.each(data, function(index, item) {
+                $('#selUsername').append($('<option>', {
+                    value: item.sa_id,
+                    text: item.sa_firstname + ' ' + item.sa_lastname,
+                    'data-id': item.isd_id
+                }));
+
+            });
+        });
+    }
+
+    function showEditTime() {
+        $.ajax({
+            url: API_URL + "Manage_timesheet/show_time_edit",
+            type: 'GET',
+            dataType: 'json',
+        })
+        .done(function(data) {
+            $('#selEditUsername').empty();
+            // Append new options from data received
+            console.log(data);
+
+        $('#inpEditDate').val(data.result2[0].its_date);
+        $('#inpEditTimeStart').val(data.result2[0].its_time_in);
+        $('#inpEditTimeEnd').val(data.result2[0].its_time_out);
+        $('#inpEditRemark').val(data.result2[0].its_remark);
+        $('#inpEditOt').val(data.result2[0].its_ot);
+
+            $.each(data.result1, function(index, item) {
+                $('#selEditUsername').append($('<option>', {
+                    value: item.sa_id,
+                    text: item.sa_firstname + ' ' + item.sa_lastname,
+                    'data-id': item.isd_id
+                }));
+
+            });
+        });
+    }
+
+    function insertTime() {
+        var username = $('#selUsername').val();
+        var date = $('#inpDate').val();
+        var timeStart = $('#inpTimeStart').val();
+        var timeEnd = $('#inpTimeEnd').val();
+        var remark = $('#inpRemark').val();
+        var inpOt = $('#inpOt').val();
+        // Prepare data object to send via AJAX
+        var formData = {
+            username: username,
+            date: date,
+            timeStart: timeStart,
+            timeEnd: timeEnd,
+            remark: remark,
+            inpOt: inpOt
+        };
+        $.ajax({
+            url: API_URL + "Manage_timesheet/insert_timesheet",
+            type: 'POST',
+            dataType: 'json',
+            data: formData
+        })
+        .done(function(data) {
+            $('#createModal').modal('hide');
+            showTimeSheet();
+        });
+    }
+
+    $('#btnCreate').click(function(){
+        $('#createModal').modal('show');
+        showUsername();
+    })
+
+    $('#btnSaveAdd').click(function(){
+        insertTime();
+    })
+
+    $('#tblTimesheet').on('click', '#btnEdit', function (ev) {
+        $('#editModal').modal('show');
+        var id = $(this).data('id');
+        showEditTime(id);
+    });
 
