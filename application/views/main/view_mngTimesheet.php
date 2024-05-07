@@ -172,6 +172,7 @@
             </div>
         </div>
     </div>
+
     <div class="modal fade" id="createModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
             <div class="modal-content">
@@ -180,7 +181,7 @@
                     <button type="button" class="btn-close me-2 mb-3" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="RegisterReceive" enctype="multipart/form-data">
+                    <form id="registerForm" enctype="multipart/form-data">
                         <div class="form-group row mb-2" style="padding: 0px 10px;padding-bottom: 20px;margin: 10px 0px;">
                             <div class="col-lg-12 mb-3">
                                 <label class="col-form-label">
@@ -195,21 +196,27 @@
                             </div>
                             <div class="col-lg-3">
                                 <label for="inputDate" class="form-label">วันที่</label>
-                                <input type="date" id="inpAddInv" class="form-control" value="<?= date('Y-m-d') ?>">
+                                <input type="date" id="inpDate" class="form-control" value="<?= date('Y-m-d') ?>">
                             </div>
                             <div class="col-lg-3">
                                 <label for="inpTimeStart" class="form-label">เวลาเข้า</label>
-                                <input type="time" id="inpAddPo" class="form-control" placeholder="Enter Address">
+                                <input type="time" id="inpTimeStart" class="form-control" placeholder="Enter Address">
                             </div>
                             <div class="col-lg-3">
                                 <label for="inpTimeEnd" class="form-label">เวลาออก</label>
-                                <input type="time" id="inpAddSupplier" class="form-control" placeholder="Enter Birthday">
+                                <input type="time" id="inpTimeEnd" class="form-control" placeholder="Enter Birthday">
+                            </div>
+                        </div>
+                        <div class="form-group row mb-2" style="padding: 0px 10px;padding-bottom: 20px;margin: 10px 0px;">
+                            <div class="col-lg-6">
+                                <label for="inpOt" class="form-label">Over Time</label>
+                                <input type="text" id="inpOt" class="form-control" placeholder="Enter Over Time">
                             </div>
                         </div>
                         <div class="form-group row mb-2" style="padding: 0px 10px;padding-bottom: 20px;margin: 10px 0px;">
                             <div class="col-lg-6">
                                 <label for="inpRemark" class="form-label">Remark</label>
-                                <textarea name="" class="form-control" id="" cols="20" rows="5"></textarea>
+                                <textarea name="" id="inpRemark" class="form-control" id="" cols="20" rows="5"></textarea>
                             </div>
                         </div>
 
@@ -218,96 +225,57 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="btnSaveReceive">Save changes</button>
+                    <button type="button" class="btn btn-primary" id="btnSaveAdd">Save changes</button>
                 </div>
             </div>
         </div>
     </div>
 
-
-    <div class="modal fade" id="detailsModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-xl" style="width:1200px" role="document">
+    <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" style="padding: 0px 10px;margin: 10px 0px;font-weight: 600;"><i class="ti-pencil-alt mr-3"></i> Receive Details</h3>
+                    <h3 class="modal-title" style="padding: 0px 10px;margin: 10px 0px;font-weight: 600;"><i class="ti-file mr-3"></i> Edit Time Sheet</h3>
                     <button type="button" class="btn-close me-2 mb-3" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group row mb-2" style="padding: 0px 10px;padding-bottom: 20px;margin: 10px 0px;">
-                        <div class="col-lg-12 mb-3">
-                            <label class="col-form-label">
-                                <h5 style="font-weight: 600;"><i class="ti-file" style="padding-right: 7px;"></i>Form input location stock</h5>
-                            </label>
+                    <form id="registerForm" enctype="multipart/form-data">
+                        <div class="form-group row mb-2" style="padding: 0px 10px;padding-bottom: 20px;margin: 10px 0px;">
 
-                            <button type="button" class="btn btn-circle btn-secondary float-end" id="btnDownload">Download</button>
-                        </div>
-
-                        <div class="col-lg-3">
-                            <label for="edtMainMenu" class="form-label">Document Number</label>
-                            <input type="text" id="docNumber" class="form-control">
-                        </div>
-                        <div class="col-lg-3">
-                            <label for="edtOrderNo" class="form-label">Invoice Number</label>
-                            <input type="text" id="invNumber" class="form-control">
-                        </div>
-
-                        <div class="col-lg-3">
-                            <label for="edtOrderNo" class="form-label">PO Number</label>
-                            <input type="text" id="poNumber" class="form-control">
-                        </div>
-                        <div class="col-lg-3">
-                            <label for="edtMainIcon" class="form-label">Create Date</label>
-                            <input type="text" id="invDate" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="form-group row mb-2" style="padding: 0px 10px;padding-bottom: 20px;margin: 10px 0px;">
-                        <div class="col-lg-3">
-                            <label for="edtOrderNo" class="form-label">Date</label>
-                            <input type="Date" id="edtOrderNo" class="form-control">
-                        </div>
-                        <div class="col-lg-3">
-                            <label for="edtOrderNo" class="form-label">Date</label>
-                            <input type="Date" id="edtOrderNo" class="form-control">
-                        </div>
-                        <div class="col-lg-6">
-                            <label for="edtOrderNo" class="form-label">Supplier Name </label>
-                            <input type="text" id="edtOrderNo" class="form-control">
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="form-group row mb-3 mt-3" style="padding: 0px 10px;padding-bottom: 20px;margin: 10px 0px;">
-                        <div class="col-lg-2">
-                            <button type="button" class="btn btn-circle btn-success" id="btnDownload"><i class="ti-plus"></i>Add</button>
-                        </div>
-                        <div class="col-lg-10">
-                            <button type="button" class="btn btn-circle btn-danger float-end" id="btnDownload"><i class="ti-file"></i> PDF</button>
-                            <button type="button" class="btn btn-circle btn-light float-end me-2" id="btnDownload"><i class="ti-printer"></i> Print</button>
-                        </div>
-
-                    </div>
-                    <div class="form-group row mb-3 mt-3" style="padding: 0px 10px;padding-bottom: 20px;margin: 10px 0px;">
-                        <div class="table-responsive text-nowrap">
-                            <div class="card-datatable table-responsive pt-0">
-                                <table class="table card-table border" style="width:100%" id="tblReceiveDetail">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-center">NO.</th>
-                                            <th class="text-center">BRAND</th>
-                                            <th class="text-center">PRODUCT</th>
-                                            <th class="text-center">MODEL</th>
-                                            <th class="text-center">DESCRIPTION</th>
-                                            <th class="text-center">QTY</th>
-                                            <th class="text-center">PRICE</th>
-                                            <th class="text-center">ACTION</th>
-                                        </tr>
-                                    <tbody class="table-border-bottom-0 text-center">
-
-                                    </tbody>
-                                </table>
+                            <div class="col-lg-3">
+                                <label for="selUsername" class="form-label">ชื่อ-นามสกุล</label>
+                                <select name="" class="form-control" id="selEditUsername">
+                                    <option value="">- select name -</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-3">
+                                <label for="inputDate" class="form-label">วันที่</label>
+                                <input type="date" id="inpEditDate" class="form-control" value="<?= date('Y-m-d') ?>">
+                            </div>
+                            <div class="col-lg-3">
+                                <label for="inpTimeStart" class="form-label">เวลาเข้า</label>
+                                <input type="time" id="inpEditTimeStart" class="form-control" placeholder="Enter Address">
+                            </div>
+                            <div class="col-lg-3">
+                                <label for="inpTimeEnd" class="form-label">เวลาออก</label>
+                                <input type="time" id="inpEditTimeEnd" class="form-control" placeholder="Enter Birthday">
                             </div>
                         </div>
-                    </div>
+                        <div class="form-group row mb-2" style="padding: 0px 10px;padding-bottom: 20px;margin: 10px 0px;">
+                            <div class="col-lg-6">
+                                <label for="inpOt" class="form-label">Over Time</label>
+                                <input type="text" id="inpEditOt" class="form-control" placeholder="Enter Over Time">
+                            </div>
+                        </div>
+                        <div class="form-group row mb-2" style="padding: 0px 10px;padding-bottom: 20px;margin: 10px 0px;">
+                            <div class="col-lg-6">
+                                <label for="inpRemark" class="form-label">Remark</label>
+                                <textarea name="" id="inpEditRemark" class="form-control" id="" cols="20" rows="5"></textarea>
+                            </div>
+                        </div>
+
+
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
