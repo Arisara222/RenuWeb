@@ -476,9 +476,9 @@ $(() => {
             });
         }
     });
-});
+    });
     
-
+    
 
     //-------------------------- Update Account ----------------------------------
     var data_acc
@@ -667,4 +667,7 @@ $(() => {
             });
         });
         
+        $('#btnAddAccount').click(function () {
+            $('#mdlAddAccount').modal('show');
+        })
 })

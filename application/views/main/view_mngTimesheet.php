@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <!--  Row 1 -->
-    <div>
+
         <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-5">
             <div class="card-body pb-0 pt-3">
                 <div class="row align-items-center">
@@ -22,7 +22,7 @@
         </div>
         <div class="form-group row mb-3">
             <div class="col-lg-12 mb-4">
-                <button type="button" class="btn btn-circle btn-success" style="background-color: #15CEA2!important;float:right" id="btnCreate" data-bs-toggle="modal" data-bs-target="#createModal"><i class="ti-plus"></i> <b>Add Information</b></button>
+                <button type="button" class="btn btn-circle btn-success" style="background-color: #15CEA2!important;float:right" id="btnCreate"><i class="ti-plus"></i> <b>Add Information</b></button>
             </div>
 
 
@@ -173,56 +173,56 @@
         </div>
     </div>
     <div class="modal fade" id="createModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" style="padding: 0px 10px;margin: 10px 0px;font-weight: 600;"><i class="ti-pencil-alt mr-3"></i>Register Personal Information</h3>
-                <button type="button" class="btn-close me-2 mb-3" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="RegisterReceive" enctype="multipart/form-data">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" style="padding: 0px 10px;margin: 10px 0px;font-weight: 600;"><i class="ti-file mr-3"></i> Register Personal Information</h3>
+                    <button type="button" class="btn-close me-2 mb-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="RegisterReceive" enctype="multipart/form-data">
+                        <div class="form-group row mb-2" style="padding: 0px 10px;padding-bottom: 20px;margin: 10px 0px;">
+                            <div class="col-lg-12 mb-3">
+                                <label class="col-form-label">
+                                    <h4 style="font-weight: 600;"><i class="ti-file" style="padding-right: 7px;"></i>Form input Information</h4>
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label for="selUsername" class="form-label">ชื่อ-นามสกุล</label>
+                                <select name="" class="form-control" id="selUsername">
+                                    <option value="">- select name -</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-3">
+                                <label for="inputDate" class="form-label">วันที่</label>
+                                <input type="date" id="inpAddInv" class="form-control" value="<?= date('Y-m-d') ?>">
+                            </div>
+                            <div class="col-lg-3">
+                                <label for="inpTimeStart" class="form-label">เวลาเข้า</label>
+                                <input type="time" id="inpAddPo" class="form-control" placeholder="Enter Address">
+                            </div>
+                            <div class="col-lg-3">
+                                <label for="inpTimeEnd" class="form-label">เวลาออก</label>
+                                <input type="time" id="inpAddSupplier" class="form-control" placeholder="Enter Birthday">
+                            </div>
+                        </div>
+                        <div class="form-group row mb-2" style="padding: 0px 10px;padding-bottom: 20px;margin: 10px 0px;">
+                            <div class="col-lg-6">
+                                <label for="inpRemark" class="form-label">Remark</label>
+                                <textarea name="" class="form-control" id="" cols="20" rows="5"></textarea>
+                            </div>
+                        </div>
 
-                    <div class="col-lg-12 mb-3">
-                        <label class="col-form-label">
-                            <h4 style="font-weight: 600;"><i class="ti-file" style="padding-right: 7px;"></i>Form input Information</h4>
-                        </label>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <label for="inpAddDoc" class="form-label">ชื่อ-นามสกุล</label>
-                            <input type="text" id="inpAddDoc" class="form-control" placeholder="Enter Name">
-                        </div>
-                        <div class="col-lg-3">
-                            <label for="inpAddInv" class="form-label">ตำแหน่ง</label>
-                            <input type="text" id="inpAddInv" class="form-control" placeholder="Enter Position">
-                        </div>
-                        <div class="col-lg-3">
-                            <label for="inpAddPo" class="form-label">ที่อยู่</label>
-                            <input type="text" id="inpAddPo" class="form-control" placeholder="Enter Address">
-                        </div>
-                        <div class="col-lg-3">
-                            <label for="inpAddSupplier" class="form-label">วันเดือนปีเกิด</label>
-                            <input type="text" id="inpAddSupplier" class="form-control" placeholder="Enter Birthday">
-                        </div>
-                    </div>
 
-                    <div class="form-group row mb-2" style="padding: 0px 10px;padding-bottom: 20px;margin: 10px 0px;"></div>
-                    <hr>
-                    <div class="form-group row mb-3 mt-3" style="padding: 0px 10px;padding-bottom: 20px;margin: 10px 0px;">
-                        <div class="col-lg-2"></div>
-                    </div>
-                    <div class="form-group row mb-3 mt-3" style="padding: 0px 10px;padding-bottom: 20px;margin: 10px 0px;">
-                        <div class="table-responsive text-nowrap"></div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="btnSaveReceive">Save changes</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="btnSaveReceive">Save changes</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
     <div class="modal fade" id="detailsModal" tabindex="-1" aria-hidden="true">

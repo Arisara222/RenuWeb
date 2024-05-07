@@ -75,8 +75,8 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '127.0.0.1',
-	'username' => '',
+	'hostname' => 'localhost',
+	'username' => 'renu_db',
 	'password' => '',
 	'database' => '',
 	'dbdriver' => 'mysqli',
