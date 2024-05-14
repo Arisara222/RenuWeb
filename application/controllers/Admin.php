@@ -62,7 +62,7 @@ class Admin extends CI_Controller {
     public function mngLeaveletter()
 	{
 		
-		$this->another_js = "<script src='" . base_url() . "assets/js/receiveInfo.js'></script>";
+		$this->another_js = "<script src='" . base_url() . "assets/js/mngLeave.js'></script>";
         $this->render_view('main/view_mngLeaveletter');
         
 	}

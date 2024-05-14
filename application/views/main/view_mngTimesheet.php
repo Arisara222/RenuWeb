@@ -1,3 +1,21 @@
+<style>
+    #tblTimeReport {
+        border-collapse: collapse;
+    }
+    #tblTimeReport th,
+    #tblTimeReport td {
+        border: 1px solid #ddd; /* Add borders to each cell */
+        padding: 8px; /* Add padding for better spacing */
+    }
+    #tblTimeReport th:first-child,
+    #tblTimeReport td:first-child {
+        border-left: none; /* Remove left border for first column */
+    }
+    #tblTimeReport th:last-child,
+    #tblTimeReport td:last-child {
+        border-right: none; /* Remove right border for last column */
+    }
+</style>
 <div class="container-fluid">
     <!--  Row 1 -->
 
@@ -276,6 +294,46 @@
 
 
                     </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="btnSaveEdit">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="viewModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" style="padding: 0px 10px;margin: 10px 0px;font-weight: 600;"><i class="ti-clipboard mr-3"></i> Summary Time Sheet</h3>
+                    <button type="button" class="btn-close me-2 mb-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <button type="button" class="btn btn-danger float-end" id="btnPrint"><i class="ti-write"></i> PDF</button><br><br>
+
+                        <div class="form-group row mb-2" style="padding: 0px 10px;padding-bottom: 20px;margin: 10px 0px;">
+                            <table class="table card-table border" style="width:100%" id="tblTimeReport">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">No.</th>  
+                                        <th colspan="2" class="text-center">Date</th>  
+                                        <th class="text-center">From</th>  
+                                        <th class="text-center">To</th>  
+                                        <th class="text-center">OT Hours</th>  
+                                        <th class="text-center">TOTAL (Hours)</th>  
+                                        <th class="text-center">Remark</th>  
+                                        <th class="text-center">Late / min</th>  
+                                        <th class="text-center">Total Late</th>  
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+
+                        </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

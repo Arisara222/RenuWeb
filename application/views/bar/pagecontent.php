@@ -19,6 +19,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{base_url}src/assets/css/styles.min.css">
     <link href="{base_url}assets/css/themify-icons/themify-icons.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         .red-text {
             color: red;
@@ -233,12 +234,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	</div>
 
 
+    <!-- <script src="{base_url}src/assets/libs/apexcharts/dist/apexcharts.min.js"></script> -->
 	<!-- bootstrap -->
+	<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.7.0.js"></script> -->
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script src="{base_url}src/assets/libs/jquery/dist/jquery.min.js"></script>
     <script src="{base_url}src/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{base_url}src/assets/js/sidebarmenu.js"></script>
     <script src="{base_url}src/assets/js/app.min.js"></script>
-    <script src="{base_url}src/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
     <script src="{base_url}src/assets/libs/simplebar/dist/simplebar.js"></script>
     <script src="{base_url}src/assets/js/dashboard.js"></script>
     <script src="{base_url}src/assets/js/login.js"></script>
@@ -246,9 +250,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <script src="{base_url}assets/js/submanu.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-
+	
     <!-- Bootstrap JavaScript -->
     <script src="<?php echo base_url() ?>/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url() ?>/assets/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>

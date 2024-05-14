@@ -1,3 +1,10 @@
+<style>
+        .img-circle {
+            border-radius: 50%;
+            width: 250px;
+            height: 250px;
+        }
+    </style>
 <div class="container-fluid">
     <!--  Row 1 -->
     <div>
@@ -22,7 +29,7 @@
         </div>
         <div class="form-group row mb-3">
             <div class="col-lg-12 mb-4">
-                <button type="button" class="btn btn-circle btn-success" style="background-color: #15CEA2!important;float:right" id="btnCreate" data-bs-toggle="modal" data-bs-target="#createModal"><i class="ti-plus"></i> <b>Register</b></button>
+                <button type="button" class="btn btn-circle btn-success" style="background-color: #15CEA2!important;float:right" id="btnRegisterLeave"><i class="ti-plus"></i> <b>Register</b></button>
             </div>
 
 
@@ -39,9 +46,13 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">NO.</th>
-                                    <th class="text-center">First Name</th>
-                                    <th class="text-center">Last Name</th>
-                                    <th class="text-center">Position</th>
+                                    <th class="text-center">ชื่อ-นามสกุล</th>
+                                    <th class="text-center">วันที่</th>
+                                    <th class="text-center">ประเภท</th>
+                                    <th class="text-center">ลาวันที่</th>
+                                    <th class="text-center">ถึงวันที่</th>
+                                    <th class="text-center">จำนวนวัน</th>
+                                    <th class="text-center">สถานะ</th>
                                     <th class="text-center">Action</th>
                                 </tr>
                             <tbody class="table-border-bottom-0 text-center">
@@ -51,171 +62,105 @@
                 </div>
             </div>
 
-            <div class="card" style="display: none;" id="content">
-                <div class="col-sm-12 mt-3">
-                    <div class="row ">
-                        <div class="col-md-12">
-                            <div class="card container">
-                                <div class="row py-2 mt-2">
-                                    <span class="fs-5 fw-bold text-primary-emphasis">Register Permission</span>
-                                    <div class="col-md-5 col-sm-10 col-5 mt-3">
-                                        <div class="row ">
-                                            <div class="col-lg-3 p-t-20">
-                                                <span>Sub Menu</span><span class="red-text">*</span>
-                                            </div>
-                                            <div class="col-lg">
-                                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-                                                    <select class="form-control" id="selMenuGroupName">
-                                                        <option value="">Choose main menu</option>
-                                                    </select>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-5 col-sm-2 col-5">
-                                        <div class="row ">
-                                            <div class="col-lg-5 p-t-20">
-                                                <span>Sub Menu controller</span><span class="red-text">*</span>
-                                            </div>
-                                            <div class="col-lg">
-                                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-                                                    <select class="form-control" id="selSubMenuName">
-                                                        <option value="">Choose main menu</option>
-                                                    </select>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md col-sm-2 col-2 p-t-20">
-                                        <button type="button" class="btn btn-circle btn-primary" id="btnSaveAddPer">Add</button>
-                                    </div>
-                                    <div class="col-12 col-sm-12 justify-content-start">
-                                        <div id="errMegadd" style="color: red; display: none;">Please enter in English only.</div>
-                                    </div>
+        </div>
+    </div>
+    <div class="modal fade" id="addLeaveModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" style="padding: 0px 10px;margin: 10px 0px;font-weight: 600;"><i class="ti-pencil-alt mr-3"></i> Register Leave Information</h3>
+                    <button type="button" class="btn-close me-2 mb-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="RegisterLeaveForm" enctype="multipart/form-data">
+                        <div class="form-group row mb-2" style="padding: 0px 10px;padding-bottom: 20px;margin: 10px 0px;">
+                            <div class="col-lg-6">
+                                <label for="inpAddDoc" class="form-label">Information</label>
+                                <div class="card">
                                     <div class="card-body">
-                                        <div class="table-responsive text-nowrap">
-                                            <div class="card-datatable table-responsive pt-0">
-                                                <table class="table card-table" id="tblPermis">
-                                                    <thead>
-                                                        <tr>
-                                                            <th class="text-center">No.</th>
-                                                            <th class="text-center">Main Menu</th>
-                                                            <th class="text-center">Sub Menu</th>
-                                                            <th class="text-center">Update Date</th>
-                                                            <th class="text-center">Update By</th>
-                                                            <th class="text-center">Stasus</th>
-                                                            <th class="text-center">Action</th>
-                                                            <th class="text-center">Action</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody class="table-border-bottom-0 text-center" id="tbody">
-                                                    </tbody>
-                                                </table>
+                                        <div class="row mb-3 text-center">
+                                            <div class="col-lg-12">
+                                                <img src="http://127.0.0.1/api/uploads/user1.jpg" class="img-circle" height="200px" weidth="200px" id="inpAddDoc" alt="">
                                             </div>
-                                            <div class="card-foot mt-2">
-                                            </div>
+                                            
                                         </div>
-                                    </div>
-                                </div>
-                                <!--/ Bordered Table -->
-
-                                <!-- Button trigger modal -->
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="mdlEdit" tabindex="-1" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="staticBackdropEdit">Edit Menu </h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        <div class="row">
+                                        <div class="col-lg-12">
+                                            <h5>นายนรภัทร จิรเศรษฐสิริ</h5>
                                             </div>
-                                            <div class="modal-body">
-                                                <div class="row">
-                                                    <div class="col mb-3">
-                                                        <label for="edtSubMenu" class="form-label">Main Menu</label>
-                                                        <input type="text" id="edtSubMenu" class="form-control" placeholder="Enter Main Menu">
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col mb-3">
-                                                        <label for="edtController" class="form-label">Main Menu Icon</label>
-                                                        <input type="text" id="edtController" class="form-control" placeholder="Enter Main Menu Icon">
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col mb-3">
-                                                        <label for="edtOrderNo" class="form-label">Order No.</label>
-                                                        <input type="text" id="edtOrderNo" class="form-control" placeholder="Enter Order No.">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary" id="btnSaveEdit">Save changes</button>
-                                            </div>
+                                            
+                                            <h6>Position : Manager</h6>
+                                            <h6>Leave Balance : 6</h6>
+                                            
                                         </div>
+                                        
+                                        
+
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="createModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" style="padding: 0px 10px;margin: 10px 0px;font-weight: 600;"><i class="ti-pencil-alt mr-3"></i>Register Personal Information</h3>
-                <button type="button" class="btn-close me-2 mb-3" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="RegisterReceive" enctype="multipart/form-data">
+                            <div class="col-lg-6">
+                                <label for="selAddEmp" class="form-label">ชื่อ-นามสกุล</label>
+                                <select name="employeeName" id="employeeName" class="form-control">
+                                    <!-- Options will be added dynamically -->
+                                </select>
+                                <br>
 
-                    <div class="col-lg-12 mb-3">
-                        <label class="col-form-label">
-                            <h4 style="font-weight: 600;"><i class="ti-file" style="padding-right: 7px;"></i>Form input Information</h4>
-                        </label>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <label for="inpAddDoc" class="form-label">ชื่อ-นามสกุล</label>
-                            <input type="text" id="inpAddDoc" class="form-control" placeholder="Enter Name">
-                        </div>
-                        <div class="col-lg-3">
-                            <label for="inpAddInv" class="form-label">ตำแหน่ง</label>
-                            <input type="text" id="inpAddInv" class="form-control" placeholder="Enter Position">
-                        </div>
-                        <div class="col-lg-3">
-                            <label for="inpAddPo" class="form-label">ที่อยู่</label>
-                            <input type="text" id="inpAddPo" class="form-control" placeholder="Enter Address">
-                        </div>
-                        <div class="col-lg-3">
-                            <label for="inpAddSupplier" class="form-label">วันเดือนปีเกิด</label>
-                            <input type="text" id="inpAddSupplier" class="form-control" placeholder="Enter Birthday">
-                        </div>
-                    </div>
+                                <label for="selTypeLeave" class="form-label">ประเภทการลา</label>
+                                <select name="leaveType" id="leaveType" class="form-control">
+                                    <!-- Options will be added dynamically -->
+                                </select>
+                                <br>
+                                <div class="row">
+                                    <div class="col-lg-5">
+                                        <label for="inpDateStart" class="form-label">จากวันที่</label>
+                                        <input type="date" id="startDate" name="startDate" class="form-control">
 
-                    <div class="form-group row mb-2" style="padding: 0px 10px;padding-bottom: 20px;margin: 10px 0px;"></div>
-                    <hr>
-                    <div class="form-group row mb-3 mt-3" style="padding: 0px 10px;padding-bottom: 20px;margin: 10px 0px;">
-                        <div class="col-lg-2"></div>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <label for="inpDateEnd" class="form-label">ถึงวันที่</label>
+                                        <input type="date" id="endDate" name="endDate" class="form-control">
+
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <label for="days" class="form-label">จำนวน</label>
+                                        <input type="text" id="daysCount" name="daysCount" class="form-control">
+
+                                    </div>
+                                </div><br>
+
+                                <div class="col-lg-6">
+                                    <label class="form-label">ชนิดการลา</label><br>
+                                    <fieldset>
+                                        <div>
+                                            <input type="radio" id="half" class="form-check-input" name="leaveKind" value="half" checked />
+                                            <label for="half">ลาไม่เต็มวัน</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <input type="radio" id="full" class="form-check-input" name="leaveKind" value="full" />
+                                            <label for="full">ลามีใบรับรองแพทย์</label>
+                                        </div>
+
+                                    </fieldset>
+                                </div><br>
+                                <div class="col-lg-6">
+                                    <label for="inpFile" class="form-label">แนบใบรับรองแพทย์</label><br>
+                                    <input type="file" id="medicalCertificate" name="medicalCertificate" class="form-control">
+                                </div>
+                                <div class="col-lg-12">
+                                    <label for="inpRemark" class="form-label">หมายเหตุ</label><br>
+                                    <textarea name="remark" id="remark" rows="5" class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="form-group row mb-3 mt-3" style="padding: 0px 10px;padding-bottom: 20px;margin: 10px 0px;">
-                        <div class="table-responsive text-nowrap"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="btnSaveLeave">Save changes</button>
                     </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="btnSaveReceive">Save changes</button>
-            </div>
         </div>
     </div>
-</div>
 
 
     <div class="modal fade" id="detailsModal" tabindex="-1" aria-hidden="true">
