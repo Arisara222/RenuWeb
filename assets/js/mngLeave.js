@@ -1,6 +1,21 @@
     $(document).ready(function () {
         const table = intializeTable();
     });
+    
+    function calculateTimeDifference(startTime, endTime) {
+        // Convert start time and end time to Date objects
+        var start = new Date("2024-05-05 " + startTime);
+        var end = new Date("2024-05-05 " + endTime);
+    
+        // Calculate the time difference in milliseconds
+        var timeDiff = Math.abs(end - start);
+    
+        // Convert milliseconds to hours
+        var hours = Math.floor(timeDiff / 1000 / 60 / 60);
+    
+        return hours;
+    }
+    
     function intializeTable() {
         $.ajax({
             url: API_URL + "Manage_leave/show_leave",
@@ -9,7 +24,7 @@
         })
         .done(function(data) {
             console.log(data); // Use console.log for better debugging
-            return $('#tblEmployee').DataTable({
+            return $('#tblLeave').DataTable({
                 data: data,
                 destroy: true,
                 columns: [
@@ -17,17 +32,21 @@
                         return meta.row + meta.settings._iDisplayStart + 1;
                         },className:'text-center'
                     },
-                    { data: 'sa_firstname',className:'text-center' },
-                    { data: 'sa_lastname',className:'text-center' },
+                    {
+                        data: null,
+                        render: function(data) {
+                            return data.sa_firstname +''+ data.sa_lastname;
+                        },
+                        className: 'text-center'
+                    },
                     { data: 'ild_created_date',className:'text-center' },
                     { data: 'ild_leave_kind',className:'text-center' },
                     { data: 'ild_date_start',className:'text-center' },
                     { data: 'ild_date_end',className:'text-center' },
-                    { data: 'ild_start_date',className:'text-center' },
-                    { data: 'ild_start_date',className:'text-center' },
                     { data: null, "render": function(data, type, row) {
                         return calculateTimeDifference(row.ild_date_start, row.ild_date_end);
                     }},
+                    { data: 'ild_status',className:'text-center' },
                     {
                         data: null,
                         render: function(data) {
@@ -105,10 +124,18 @@
 
         var formData = new FormData();
         formData.append('medicalCertificate', $('#medicalCertificate')[0].files[0]);
+        formData.append('leaveType', $('#leaveType').val());
+        formData.append('employeeName', $('#employeeName').val());
+        formData.append('startDate', $('#startDate').val());
+        formData.append('endDate', $('#endDate').val());
+        formData.append('leaveKind', $('#leaveKind').val());
+        formData.append('remark', $('#remark').val());
+
         // Send the form data using AJAX
         $.ajax({
             url: API_URL + "Manage_leave/insert_leave",
             type: 'POST',
+            dataType: 'json',
             data: formData,
             contentType: false, // Necessary for file uploads
             processData: false, // Necessary for file uploads

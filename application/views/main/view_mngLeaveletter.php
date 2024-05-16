@@ -42,7 +42,7 @@
                 <!-- start page container -->
                 <div class="table-responsive text-nowrap">
                     <div class="card-datatable table-responsive pt-0">
-                        <table class="table card-table border" style="width:100%" id="tblEmployee">
+                        <table class="table card-table border" style="width:100%" id="tblLeave">
                             <thead>
                                 <tr>
                                     <th class="text-center">NO.</th>
