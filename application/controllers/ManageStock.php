@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class ManageAccount extends CI_Controller {
+class ManageStock extends CI_Controller {
 
 
 	private $another_css;
@@ -48,8 +48,16 @@ class ManageAccount extends CI_Controller {
 	public function mngStock()
 	{
 		
-		$this->another_js = "<script src='" . base_url() . "assets/js/mngAccount.js'></script>";
-        $this->render_view('main/view_mngAccount');
+		$this->another_js = "<script src='" . base_url() . "assets/js/mngStockAll.js'></script>";
+        $this->render_view('main/view_manage_stock');
+       
+	}
+	
+	public function mngAddProduct()
+	{
+		
+		$this->another_js = "<script src='" . base_url() . "assets/js/mngAddProduct.js'></script>";
+        $this->render_view('main/view_add_product');
        
 	}
 

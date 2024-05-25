@@ -36,12 +36,12 @@ $(document).ready(function () {
                             var minutes = parseInt(timeParts[1]);
         
                             // Check if time exceeds 70:00 (7:00 AM)
-                            if (hours > 7 || (hours === 7 && minutes > 0)) {
+                            if (hours > 8 || (hours === 8 && minutes > 0)) {
                                 // Calculate extra minutes
-                                var extraMinutes = (hours - 7) * 60 + minutes;
+                                var extraMinutes = (hours - 8) * 60 + minutes;
                                 return extraMinutes;
                             } else {
-                                return data;
+                                return 0;
                             }
                         }
                     },
@@ -54,18 +54,25 @@ $(document).ready(function () {
                             var minutes = parseInt(timeParts[1]);
         
                             // Check if time exceeds 70:00 (7:00 AM)
-                            if (hours > 7 || (hours === 7 && minutes > 0)) {
+                            if (hours > 8 || (hours === 8 && minutes > 0)) {
                                 // Calculate extra minutes
-                                var extraMinutes = (hours - 7) * 60 + minutes;
+                                var extraMinutes = (hours - 8) * 60 + minutes;
                                 return extraMinutes + 15;
                             } else {
-                                return data;
+                                return 0;
                             }
                         }
                     },
-                    { data: 'its_id', render: function(data) {
-                        return '<a href="javascript:void(0)" class="btn btn-warning float-center" id="btnEdit" data-id="' + data + '"><i class="ti-pencil"></i> Edit</a>';
-                    },className:'text-center'}
+                    {
+                        data: null,
+                        render: function(data) {
+                            return `
+                                <a href="javascript:void(0)" class="btn btn-info float-center" id="btnView" data-id="${data.sa_id}"><i class="ti-search"></i> View</a>
+                                <a href="javascript:void(0)" class="btn btn-warning float-center" id="btnEdit" data-id="${data.its_id}"><i class="ti-pencil"></i> Edit</a>
+                            `;
+                        },
+                        className: 'text-center'
+                    }
                 ],
             });
         })
@@ -83,6 +90,37 @@ $(document).ready(function () {
         var hours = Math.floor(timeDiff / 1000 / 60 / 60);
     
         return hours;
+    }
+
+    function calculateExtraMinutes(timeIn) {
+        // Split time string to extract hours and minutes
+        var timeParts = timeIn.split(":");
+        var hours = parseInt(timeParts[0]);
+        var minutes = parseInt(timeParts[1]);
+    
+        // Check if time exceeds 8:00 AM
+        if (hours > 8 || (hours === 8 && minutes > 0)) {
+            // Calculate extra minutes
+            var extraMinutes = (hours - 8) * 60 + minutes;
+            return extraMinutes;
+        } else {
+            return 0;
+        }
+    }
+    function calculateExtraTotalMinutes(timeIn) {
+        // Split time string to extract hours and minutes
+        var timeParts = timeIn.split(":");
+        var hours = parseInt(timeParts[0]);
+        var minutes = parseInt(timeParts[1]);
+    
+        // Check if time exceeds 8:00 AM
+        if (hours > 8 || (hours === 8 && minutes > 0)) {
+            // Calculate extra minutes
+            var extraMinutes = (hours - 8) * 60 + minutes;
+            return extraMinutes+15;
+        } else {
+            return 0;
+        }
     }
 
     function showUsername() {
@@ -134,6 +172,54 @@ $(document).ready(function () {
         });
     }
 
+    var daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+// Function to get the day name from a date string
+function getDayName(dateString) {
+    var date = new Date(dateString);
+    var dayIndex = date.getDay();
+    return daysOfWeek[dayIndex];
+}
+
+    function showReportTime(id) {
+        $.ajax({
+            url: API_URL + "Manage_timesheet/show_timesheet_view",
+            type: 'GET',
+            dataType: 'json',
+            data: {
+                id: id
+            }
+        })
+        .done(function(data) {
+            console.log(data); // Use console.log for better debugging
+            
+            // Clear existing table content
+            $('#tblTimeReport tbody').empty();
+            
+            // Iterate through the data and append rows to the table
+            $.each(data, function(index, item) {
+                var html = '<tr>' +
+                    '<td class="text-center">' + (index + 1) + '</td>' +
+                    '<td class="text-center">' + item.its_date + '</td>' +
+                    '<td class="text-center">' + getDayName(item.its_date) + '</td>' +
+                    '<td class="text-center">' + item.its_time_in + '</td>' +
+                    '<td class="text-center">' + item.its_time_out + '</td>' +
+                    '<td class="text-center">' + item.its_ot + '</td>' +
+                    '<td class="text-center">' + calculateTimeDifference(item.its_time_in, item.its_time_out) + '</td>' +
+                    '<td class="text-center '+(getDayName(item.its_date) == "Sunday" ? 'text-danger' : '')+'">' + item.its_remark + '</td>' +
+                    '<td class="text-center text-danger">' + calculateExtraMinutes(item.its_time_in) + '</td>' +
+                    '<td class="text-center text-danger">' + calculateExtraTotalMinutes(item.its_time_in) + '</td>' +
+                    '</tr>';
+                $('#tblTimeReport tbody').append(html);
+            });
+        })
+        .fail(function(xhr, status, error) {
+            // Handle error
+            console.error(error);
+        });
+    }
+    
+
     function insertTime() {
         var username = $('#selUsername').val();
         var date = $('#inpDate').val();
@@ -175,5 +261,11 @@ $(document).ready(function () {
         $('#editModal').modal('show');
         var id = $(this).data('id');
         showEditTime(id);
+    });
+
+    $('#tblTimesheet').on('click', '#btnView', function (ev) {
+        $('#viewModal').modal('show');
+        var id = $(this).data('id');
+        showReportTime(id);
     });
 

@@ -190,7 +190,7 @@ $(() => {
                 }
                 for (let i = 0; i < plant.length; i++) {
                     const data = plant[i];
-                        $('.selPlantAdd').append(`<option value="${data.mpc_id}">${data.mpc_name}</option>`)
+                        $('.selPlantAdd').append(`<option value="${data.mp_id}">${data.mp_name}</option>`)
                         $('.edtPlantEdit').append(`<option value="${data.mpc_id}">${data.mpc_name}</option>`)
                 }
             },
