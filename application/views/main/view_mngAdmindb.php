@@ -166,7 +166,7 @@
         </div>
     </div>
     <div class="modal fade" id="createModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="modal-title" style="padding: 0px 10px;margin: 10px 0px;font-weight: 600;"><i class="ti-pencil-alt mr-3"></i>Register Personal Information</h3>
@@ -214,8 +214,8 @@
                 <button type="button" class="btn btn-primary" id="btnSaveReceive">Save changes</button>
             </div>
         </div>
+        </div>
     </div>
-</div>
 
 
     <div class="modal fade" id="detailsModal" tabindex="-1" aria-hidden="true">

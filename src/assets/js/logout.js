@@ -14,7 +14,7 @@ $(document).ready(function () {
             $.ajax({
                 url: base_url('Login/logout'),
                 success: (response) => {
-                    window.location.href = 'http://127.0.0.1/webside_Renu/Login/login';
+                    window.location.href = 'http://127.0.0.1/RenuWeb/Login/login';
                 }
             })
         }

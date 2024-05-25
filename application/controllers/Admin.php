@@ -66,6 +66,13 @@ class Admin extends CI_Controller {
         $this->render_view('main/view_mngLeaveletter');
         
 	}
+    public function mngLeaveApprove()
+	{
+		
+		$this->another_js = "<script src='" . base_url() . "assets/js/mngLeaveApprove.js'></script>";
+        $this->render_view('main/view_mngLeaveApprove');
+        
+	}
 	
     public function callApi()
     {

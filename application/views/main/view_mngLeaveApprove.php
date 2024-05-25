@@ -77,22 +77,12 @@
                 </div>
             </div>
         </div>
-        <div class="form-group row mb-3">
-            <div class="col-lg-12 mb-4">
-                <button type="button" class="btn btn-circle btn-success" style="background-color: #15CEA2!important;float:right" id="btnRegisterLeave"><i class="ti-plus"></i> <b>Register</b></button>
-            </div>
-        <button type="button" id="report" class="btn btn-success" style="float:right">ddddd</button>
-
-            <div class="col-lg-5">
-            </div>
-
-        </div>
         <div class="card border">
             <div class="card-body">
                 <!-- start page container -->
                 <div class="table-responsive text-nowrap">
                     <div class="card-datatable table-responsive pt-0">
-                        <table class="table card-table border" style="width:100%" id="tblLeave">
+                        <table class="table card-table border" style="width:100%" id="tblLeaveApprove">
                             <thead>
                                 <tr>
                                     <th class="text-center">NO.</th>
@@ -102,7 +92,6 @@
                                     <th class="text-center">ลาวันที่</th>
                                     <th class="text-center">ถึงวันที่</th>
                                     <th class="text-center">จำนวนวัน</th>
-                                    <th class="text-center">สถานะ</th>
                                     <th class="text-center">Action</th>
                                 </tr>
                             <tbody class="table-border-bottom-0 text-center">
@@ -249,4 +238,4 @@
                 </form>
             </div>
         </div>
-</div>
+    </div>

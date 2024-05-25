@@ -25,12 +25,14 @@ $(() => {
 
     // Event handler for clicking the search button
     $(document).on('click', '#btnSerchMain', function () {
+        
         loadData();
     });
 })
 
 
 function loadData() {
+    
     MainmenuDropdown();
     SubmenuDropdown();
     shDataTable(); // เรียกเพื่อโหลดข้อมูลในตารางเมื่อหน้าเว็บโหลด
@@ -115,6 +117,7 @@ function MainmenuDropdown() {
                 const menu = response[i];
                 dropdown.append(`<option value="${menu.smm_id}">${menu.smm_name}</option>`);
             }
+            $('#selMenuGroupName').trigger('change');
         },
         error: (err) => {
             console.log(err);
@@ -124,20 +127,30 @@ function MainmenuDropdown() {
 
 
 function SubmenuDropdown() {
+    var mainMenuId = $('#selMenuGroupName').val(); // Get the selected main menu ID
+    // alert(mainMenuId);
     var dropdown = $('#selSubMenuName');
 
-    // เรียก API
+    if (!mainMenuId) {
+        // If no main menu is selected, clear the submenu dropdown
+        dropdown.empty();
+        dropdown.append('<option value="">Choose sub menu</option>');
+        return;
+    }
+
+    // Call the API
     $.ajax({
-        method: "get",
+        method: "POST",
         url: "http://127.0.0.1/api/Manage_permis_detail/drop_sub",
+        data: { main_menu_id: mainMenuId }, // Send the main menu ID as a parameter
         dataType: 'json',
+        
         success: (response) => {
-            console.log(response); // ดูข้อมูลที่ได้รับจาก API ใน Console Log
+            console.log(response); // Log the response from the API
 
-            // ล้างค่าเดิมทั้งหมดใน dropdown ก่อน
+            // Clear existing options in the dropdown
             dropdown.empty();
-
-            // วนลูปเพื่อเพิ่ม options เข้าไปใน dropdown
+            // Loop through the response and add options to the dropdown
             for (let i = 0; i < response.length; i++) {
                 const menu = response[i];
                 dropdown.append(`<option value="${menu.ssm_id}">${menu.ssm_name}</option>`);
@@ -148,6 +161,9 @@ function SubmenuDropdown() {
         },
     });
 }
+
+// Attach the event listener to the main menu dropdown
+$('#selMenuGroupName').change(SubmenuDropdown);
 
 
 //-------------------------- Update flg status ----------------------------------
