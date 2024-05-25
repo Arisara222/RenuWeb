@@ -202,8 +202,12 @@ $("#submitStockEdit").click(function (e) {
 
 $("#productSelect").change(function () {
 	$.ajax({
-		url: API_URL + "Manage_stock/show_product_all",
+		url: API_URL + "Manage_stock/show_product_byid",
 		dataType: "json",
+    type: "POST",
+    data: {
+      id: $(this).val(),
+    },
 		success: function (data) {
 			$("#unitPriceInput").val(data[0].mp_price);
 		},
