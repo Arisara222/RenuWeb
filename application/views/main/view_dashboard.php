@@ -61,7 +61,7 @@
               </div>
               <div class="col-lg-4">
                 <!-- Yearly Breakup -->
-                <div class="card overflow-hidden clicks">
+                <div class="card overflow-hidden">
                   <div class="card-body p-4 ">
                     <h2 class="text-danger">Storage</h2>
                     <div class="row align-items-center">
@@ -78,7 +78,7 @@
                         </div>
                       </div>
                       <div class="col-lg-4">
-                        <span class="mb-5"><img src="http://127.0.0.1/renuWeb/assets/img/icon/bell.png" style="height: 80px;margin-bottom: 40px;margin-left: 20%" alt=""></span>
+                        <span class="mb-5"><img src="http://127.0.0.1/renuWeb/assets/img/icon/package.png" style="height: 80px;margin-bottom: 40px;margin-left: 20%" alt=""></span>
                       </div>
                     </div>
                   </div>
