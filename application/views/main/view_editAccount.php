@@ -38,6 +38,10 @@
             <label for="email" class="form-label">E-mail</label>
             <input class="form-control" type="text" id="edtEmail" name="email"  placeholder="xxxx@xxx.xxx"  />
           </div>
+          <div class="mb-3 col-md-6">
+            <label for="email" class="form-label">Image</label>
+            <input class="form-control" type="file" id="edtEmail" name="email"  placeholder="xxxx@xxx.xxx"  />
+          </div>
         
           <div class="d-flex justify-content-end mt-2 pr-2">
             <button class="btn btn-primary me-2" id="btnSaveEdit">Save changes</button>

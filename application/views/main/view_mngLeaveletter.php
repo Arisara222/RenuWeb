@@ -81,7 +81,7 @@
             <div class="col-lg-12 mb-4">
                 <button type="button" class="btn btn-circle btn-success" style="background-color: #15CEA2!important;float:right" id="btnRegisterLeave"><i class="ti-plus"></i> <b>Register</b></button>
             </div>
-        <button type="button" id="report" class="btn btn-success" style="float:right">ddddd</button>
+        
 
             <div class="col-lg-5">
             </div>

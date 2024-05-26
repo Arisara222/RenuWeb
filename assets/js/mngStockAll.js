@@ -170,11 +170,12 @@ $("#submitStock").click(function (e) {
 // Submit form (handled by your controller logic)
 $("#submitStockEdit").click(function (e) {
 	e.preventDefault();
-
 	var formData = {
+		product: $("#productSelectEdit").val(),
 		product: $("#productSelectEdit").val(),
 		quantity: $("#quantityInputEdit").val(),
 		notes: $("#notesInputEdit").val(),
+		company: $("#companyEdit").val(),
 	};
 
 	$.ajax({

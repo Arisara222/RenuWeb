@@ -175,11 +175,11 @@ $(document).ready(function () {
     var daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 // Function to get the day name from a date string
-function getDayName(dateString) {
-    var date = new Date(dateString);
-    var dayIndex = date.getDay();
-    return daysOfWeek[dayIndex];
-}
+    function getDayName(dateString) {
+        var date = new Date(dateString);
+        var dayIndex = date.getDay();
+        return daysOfWeek[dayIndex];
+    }
 
     function showReportTime(id) {
         $.ajax({
@@ -243,10 +243,54 @@ function getDayName(dateString) {
             data: formData
         })
         .done(function(data) {
+            Swal. fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'Data has been saved!'
+            });
             $('#createModal').modal('hide');
-            showTimeSheet();
+            reloadTable();
         });
     }
+
+    function updateTime(id) {
+        var username = $('#selEditUsername').val();
+        var date = $('#inpEditDate').val();
+        var timeStart = $('#inpEditTimeStart').val();
+        var timeEnd = $('#inpEditTimeEnd').val();
+        var remark = $('#inpEditRemark').val();
+        var inpOt = $('#inpEditOt').val();
+        // Prepare data object to send via AJAX
+        var formData = {
+            username: username,
+            date: date,
+            timeStart: timeStart,
+            timeEnd: timeEnd,
+            remark: remark,
+            inpOt: inpOt,
+            its_id: id
+        };
+        $.ajax({
+            url: API_URL + "Manage_timesheet/update_timesheet",
+            type: 'POST',
+            dataType: 'json',
+            data: formData
+        })
+        .done(function(data) {
+            Swal. fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'Data has been saved!'
+            });
+            $('#editModal').modal('hide');
+            reloadTable();
+        });
+    }
+
+    function reloadTable() {
+        const table = intializeTable();
+        table.ajax.reload(null, false);
+      }
 
     $('#btnCreate').click(function(){
         $('#createModal').modal('show');
@@ -257,15 +301,30 @@ function getDayName(dateString) {
         insertTime();
     })
 
-    $('#tblTimesheet').on('click', '#btnEdit', function (ev) {
+    $('#btnSaveEdit').click(function(){
+        var id = $('#iddd').val();
+        updateTime(id);
+    })
+
+    $('#tblTimesheet').on('click', '#btnEdit', function () {
         $('#editModal').modal('show');
         var id = $(this).data('id');
+        $('#iddd').val(id);
         showEditTime(id);
     });
 
     $('#tblTimesheet').on('click', '#btnView', function (ev) {
+      
         $('#viewModal').modal('show');
         var id = $(this).data('id');
         showReportTime(id);
+    });
+
+    $('#report').click(function(){
+        
+      
+        // alert(isi_document)
+        var url = API_URL + "Report_time/export_pdf/";// Append invNumber as a parameter
+        window.open(url, '_blank');
     });
 

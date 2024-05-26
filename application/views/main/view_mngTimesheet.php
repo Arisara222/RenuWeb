@@ -45,6 +45,7 @@
 
 
             <div class="col-lg-5">
+            <button type="button" id="report" class="btn btn-danger">Report</button>
             </div>
 
         </div>
@@ -178,7 +179,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary" id="btnSaveEdit">Save changes</button>
+                                                <button type="button" class="btn btn-primary" id="btnSaveEdit1">Save changes</button>
                                             </div>
                                         </div>
                                     </div>
@@ -273,6 +274,7 @@
                             <div class="col-lg-3">
                                 <label for="inpTimeStart" class="form-label">เวลาเข้า</label>
                                 <input type="time" id="inpEditTimeStart" class="form-control" placeholder="Enter Address">
+                                <!-- <input type="text" id="iddd" class="form-control" placeholder="Enter Address"> -->
                             </div>
                             <div class="col-lg-3">
                                 <label for="inpTimeEnd" class="form-label">เวลาออก</label>
@@ -337,7 +339,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="btnSaveEdit">Save changes</button>
+                    <!-- <button type="button" class="btn btn-primary" id="btnSaveEdit1">Save changes</button> -->
                 </div>
             </div>
         </div>
