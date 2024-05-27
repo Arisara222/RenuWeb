@@ -46,6 +46,7 @@ class Dashboard extends CI_Controller {
 	
 	public function dashboard()
 	{
+		$this->another_js = "<script src='" . base_url() . "assets/js/dashboard.js'></script>";
 		$this->render_view('main/view_dashboard');
 	}
 }

@@ -360,10 +360,4 @@
     // Update the leave balance
     $('#leaveBalance').text('Leave Balance : ');
     });
-    $('#report').click(function(){
-        
-      
-        // alert(isi_document)
-        var url = API_URL + "Report_time/export_pdf/";// Append invNumber as a parameter
-        window.open(url, '_blank');
-    });
+
