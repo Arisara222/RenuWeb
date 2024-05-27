@@ -1,53 +1,62 @@
+<style>
+  .profile-img {
+    width: 170px;
+    height: 170px;
+    object-fit: cover;
+  }
+</style>
 <div class="container-xxl flex-grow-1 container-p-y">
-  <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">My Profile /</span> Account</h4>
-
-  <div class="card mb-4">
-    <!-- Account -->
-    <div class="card-body d-flex justify-content-center">
-      <div class="d-flex align-items-start align-items-sm-center gap-4">
-        <img src="{base_url}src/assets/images/profile/user-1.jpg" alt="user-avatar" class="d-block rounded" height="100" width="100" id="uploadedAvatar" />
+  <h2 class="mb-4">My Profile / Account</h2>
+  <form id="profileForm">
+    <div class="row mb-3">
+      <div class="col-lg-4">
+        <div class="card mb-5">
+          <div class="card-body text-center">
+            <img id="profileImagePreview" src="http://127.0.0.1/api/uploads/profile.png" alt="Profile Picture" class="img-thumbnail rounded-circle profile-img mb-3"><br><br><br><br>
+            <input type="file" class="form-control mt-4" id="profileImage" name="profileImage">
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="row">
+          <div class="col-lg-6 mb-9">
+            <label for="empCode" class="form-label">Employee Code</label>
+            <input type="text" class="form-control" id="empCode" name="empCode">
+          </div>
+          <div class="col-lg-6">
+            <label for="empCode" class="form-label">Password</label>
+            <input type="Password" class="form-control" id="password" name="password" autocomplete="new-password">
+            <input type="hidden" class="form-control" id="pwdhidden" name="pwdhidden">
+          </div>
+          <div class="col-lg-6 mb-9">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstName" name="firstName">
+          </div>
+          <div class="col-lg-6">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastName" name="lastName">
+          </div>
+          <div class="col-lg-6 mb-9">
+            <label for="email" class="form-label">E-mail</label>
+            <input type="text" class="form-control" id="email" name="email">
+          </div>
+          <div class="col-lg-6">
+            <label for="HBD" class="form-label">Birthday</label>
+            <input type="date" class="form-control" id="HBD" name="HBD">
+          </div>
+          <div class="col-lg-12 mb-9">
+            <label for="HBD" class="form-label">Address</label>
+            <textarea name="address" id="inputAddress" class="form-control" rows="3"></textarea>
+          </div>
+          </form>
+          <div class="col-lg-12">
+            <div class="d-flex justify-content-end">
+              <button type="button" class="btn btn-secondary me-2">Cancel</button>
+              <button type="button" class="btn btn-primary" id="btnSaveEdit">Save Changes</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="text-center  mb-4">
-      <span><h5><?php echo $this->session->userdata('firstname');?></h5></span>
-      <span><h5><?php echo $this->session->userdata('lastname');?></h5></span>
-    </div>
-
-    <hr class="my-0" />
-    <div class="card-body">
-      <form id="formAccountSettings" method="POST" onsubmit="return false">
-        <div class="row">
-
-          <div class="mb-3 col-md-6">
-            <label for="empcode" class="form-label">Empcode</label>
-            <input class="form-control" type="text" name="empcode" id="edtEmpCode" readonly/>
-          </div>
-          <div class="mb-3 col-md-6">
-            <label for="firstName" class="form-label">Password</label>
-            <input class="form-control" type="text" id="edtPassword" name="password" />
-          </div>
-          <div class="mb-3 col-md-6">
-            <label for="firstName" class="form-label">First Name</label>
-            <input class="form-control" type="text" id="edtFirstName" name="firstName" />
-          </div>
-          <div class="mb-3 col-md-6">
-            <label for="lastName" class="form-label">Last Name</label>
-            <input class="form-control" type="text" name="lastName" id="edtLastName"   />
-          </div>
-          <div class="mb-3 col-md-6">
-            <label for="email" class="form-label">E-mail</label>
-            <input class="form-control" type="text" id="edtEmail" name="email"  placeholder="xxxx@xxx.xxx"  />
-          </div>
-          <div class="mb-3 col-md-6">
-            <label for="email" class="form-label">Image</label>
-            <input class="form-control" type="file" id="edtEmail" name="email"  placeholder="xxxx@xxx.xxx"  />
-          </div>
-        
-          <div class="d-flex justify-content-end mt-2 pr-2">
-            <button class="btn btn-primary me-2" id="btnSaveEdit">Save changes</button>
-            <button type="reset" class="btn btn-outline-secondary">Cancel</button>
-          </div>
-      </form>
-    </div>
-  </div>
+  
 </div>
