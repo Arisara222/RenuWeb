@@ -47,7 +47,7 @@ class Login extends CI_Controller {
             $this->session->set_userdata('perMissionGroup', $login->permis_id);
             $this->session->set_userdata('perMissionGroupName', $login->permis_group);
             $this->session->set_userdata('log_login', $login->log_login);
-
+            $this->session->set_userdata('image', $login->image);
         }
         echo json_encode($result);
     }
